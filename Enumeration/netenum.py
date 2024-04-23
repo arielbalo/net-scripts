@@ -55,11 +55,11 @@ if __name__ == "__main__":
     timeout = args.timeout
     
     if args.range:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
             for result in executor.map(ping_sweep, scan_subnet(args.range)):
                 pass
     elif args.ipaddress:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
             for port in list(range(ports)):
                 executor.submit(get_open_ports, args.ipaddress, port, verbose)
                 pass
